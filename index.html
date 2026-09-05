@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miana Micael's 7th Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700;800;900&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: linear-gradient(135deg, #ffc0cb, #dda0dd);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #4a2e35;
+            padding: 15px 10px;
+        }
+
+        .butterfly-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-butterfly {
+            position: absolute;
+            font-size: 22px;
+            animation: floatButterfly 12s linear infinite;
+            opacity: 0.65;
+        }
+        @keyframes floatButterfly {
+            0% { transform: translateY(110vh) translateX(0) rotate(0deg); }
+            50% { transform: translateY(50vh) translateX(30px) rotate(20deg); }
+            100% { transform: translateY(-10vh) translateX(-30px) rotate(-20deg); }
+        }
+
+        #page1 {
+            position: relative; z-index: 10;
+            min-height: 85vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+        .envelope-container {
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            max-width: 90vw;
+        }
+        .envelope {
+            background: #fff;
+            width: 260px; height: 160px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+            display: flex; justify-content: center; align-items: center;
+            border: 3px solid #ff69b4;
+        }
+        .envelope-flap {
+            position: absolute; top: 0; left: 0;
+            width: 0; height: 0;
+            border-left: 130px solid transparent;
+            border-right: 130px solid transparent;
+            border-top: 90px solid #ffb6c1;
+            transform-origin: top;
+            transition: transform 0.6s ease;
+        }
+        .envelope-container:hover .envelope-flap { transform: rotateX(180deg); }
+        .invitation-text {
+            margin-top: 25px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: #d81b60;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            padding: 0 10px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        #page2 {
+            display: none; position: relative; z-index: 10;
+            max-width: 800px; margin: 0 auto; padding: 10px 5px;
+        }
+
+        .header-section {
+            text-align: center; 
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe6ee 100%);
+            padding: 25px 15px; 
+            border-radius: 20px; 
+            border: 3px solid #ffb6c1;
+            box-shadow: 0 12px 30px rgba(219, 112, 147, 0.3); 
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Responsive Responsive SVG Floral Artwork */
+        .svg-floral {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(2px 4px 8px rgba(184, 28, 92, 0.3));
+        }
+        .floral-top-left { top: -5px; left: -5px; }
+        .floral-top-right { top: -5px; right: -5px; transform: scaleX(-1); }
+
+        .ribbon-header-container {
+            position: relative;
+            z-index: 3;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .number-7 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #d81b60, #ff1493, #880e4f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 0.85;
+            display: inline-block;
+            filter: drop-shadow(2px 4px 6px rgba(216, 27, 96, 0.3));
+        }
+        .th-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ad1457;
+            vertical-align: top;
+            margin-left: -5px;
+        }
+        .banner-ribbon {
+            position: relative;
+            background: linear-gradient(90deg, #d81b60, #ff4081, #d81b60);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            padding: 8px 30px;
+            margin-top: -5px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(216, 27, 96, 0.4);
+            display: inline-block;
+        }
+
+        .hero-portrait-wrapper {
+            position: relative;
+            z-index: 3;
+            display: inline-block;
+            margin: 15px auto 10px auto;
+            max-width: 100%;
+        }
+        .hero-portrait {
+            max-height: 320px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0px 8px 20px rgba(216, 27, 96, 0.35));
+        }
+
+        .header-section h1 {
+            position: relative;
+            z-index: 3;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem; 
+            color: #d81b60; 
+            margin: 5px 0 10px 0;
+            word-wrap: break-word;
+        }
+
+        /* Fully Responsive Event Card */
+        .event-details-card {
+            position: relative;
+            z-index: 3;
+            margin: 15px auto 5px auto;
+            width: 100%;
+            max-width: 680px;
+            background: linear-gradient(135deg, #ffffff, #fff0f5);
+            border: 2px solid #ff80ab;
+            border-radius: 16px;
+            padding: 15px 5px;
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.15);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .event-col { 
+            flex: 1; 
+            padding: 5px; 
+            text-align: center; 
+            position: relative; 
+        }
+        .event-col:not(:last-child)::after {
+            content: ''; position: absolute; right: 0; top: 15%; height: 70%; width: 1px;
+            background: #ff80ab;
+        }
+        .event-icon-circle {
+            width: 38px; height: 38px; margin: 0 auto 6px auto;
+            background: linear-gradient(135deg, #ff4081, #c2185b);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: #fff;
+            box-shadow: 0 3px 8px rgba(194, 24, 91, 0.3);
+        }
+        .event-title {
+            font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; color: #c2185b;
+            text-transform: uppercase; margin-bottom: 2px;
+        }
+        .event-value { font-size: 0.82rem; font-weight: 700; color: #4a2e35; line-height: 1.2; }
+
+        /* Mobile Responsive Grid */
+        .details-grid {
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 15px;
+        }
+        .card {
+            border-radius: 15px; padding: 20px 15px; text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12); cursor: pointer;
+            position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.6);
+        }
+        .card-roses { background: linear-gradient(135deg, #7a1c31, #a9324d); border: 2px solid #ffccd5; color: #fff; }
+        .card-candles { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 2px solid #ffcc80; color: #5c2a38; }
+        .card-bluebills { background: linear-gradient(135deg, #e1f5fe, #b3e5fc); border: 2px solid #81d4fa; color: #01579b; }
+        .card-gifts { background: linear-gradient(135deg, #fffde7, #fff9c4); border: 2px solid #fff59d; color: #5c2a38; }
+        .card-treasures { background: linear-gradient(135deg, #efebe9, #d7ccc8); border: 2px solid #bcaaa4; color: #3e2723; }
+        .card-special { background: linear-gradient(135deg, #fce4ec, #f8bbd0); border: 2px solid #f48fb1; color: #880e4f; }
+
+        .card h3 { font-size: 2rem; margin-bottom: 6px; font-family: 'Great Vibes', cursive; }
+        .dress-badge {
+            display: inline-block; padding: 5px 12px; border-radius: 12px;
+            font-size: 0.7rem; font-weight: bold; color: #fff; margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .hidden-content {
+            display: none; text-align: left; font-size: 0.9rem;
+            margin-top: 10px; border-top: 1px dashed currentColor; padding-top: 10px;
+        }
+        .hidden-content ul { padding-left: 18px; }
+        .hidden-content li { font-family: 'Dancing Script', cursive; font-size: 1.2rem; margin-bottom: 4px; }
+
+        .footer-note {
+            text-align: center; margin-top: 20px;
+            background: rgba(255, 255, 255, 0.9); padding: 12px;
+            border-radius: 12px; border: 2px dashed #ff69b4;
+            font-family: 'Dancing Script', cursive; font-size: 1.2rem; color: #ad1457;
+        }
+
+        /* Desktop Adjustments */
+        @media (min-width: 600px) {
+            body { padding: 20px 10px; }
+            .svg-floral { width: 140px; height: 140px; }
+            .number-7 { font-size: 5.5rem; }
+            .th-text { font-size: 2.8rem; }
+            .banner-ribbon { font-size: 1.1rem; padding: 10px 45px; }
+            .hero-portrait { max-height: 380px; }
+            .header-section h1 { font-size: 4.5rem; }
+            .event-title { font-size: 0.75rem; letter-spacing: 1.5px; }
+            .event-value { font-size: 0.95rem; }
+            .details-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+            .card h3 { font-size: 2.2rem; }
+            .dress-badge { font-size: 0.75rem; letter-spacing: 1px; }
+            .hidden-content li { font-size: 1.3rem; }
+            .footer-note { font-size: 1.4rem; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="butterfly-bg">
+        <span class="bg-butterfly" style="left: 10%; animation-delay: 0s;">🦋</span>
+        <span class="bg-butterfly" style="left: 30%; animation-delay: 4s;">🦋</span>
+        <span class="bg-butterfly" style="left: 70%; animation-delay: 2s;">🦋</span>
+        <span class="bg-butterfly" style="left: 90%; animation-delay: 6s;">🦋</span>
+    </div>
+
+    <div id="page1">
+        <div class="envelope-container" onclick="openInvitation()">
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <span style="font-size: 3rem;">💌</span>
+            </div>
+        </div>
+        <div class="invitation-text">You're Invited! (Click Envelope)</div>
+    </div>
+
+    <div id="page2">
+        <div class="header-section">
+            <svg class="svg-floral floral-top-left" viewBox="0 0 100 100">
+                <path d="M10,10 Q30,50 60,20 Q40,60 10,10" fill="#4a7c59"/>
+                <circle cx="25" cy="25" r="18" fill="#d81b60"/>
+                <circle cx="25" cy="25" r="12" fill="#ff4081"/>
+                <circle cx="25" cy="25" r="6" fill="#f8bbd0"/>
+                <circle cx="55" cy="35" r="14" fill="#ad1457"/>
+                <circle cx="55" cy="35" r="9" fill="#e91e63"/>
+                <circle cx="35" cy="55" r="12" fill="#c2185b"/>
+            </svg>
+            <svg class="svg-floral floral-top-right" viewBox="0 0 100 100">
+                <path d="M10,10 Q30,50 60,20 Q40,60 10,10" fill="#4a7c59"/>
+                <circle cx="25" cy="25" r="18" fill="#d81b60"/>
+                <circle cx="25" cy="25" r="12" fill="#ff4081"/>
+                <circle cx="25" cy="25" r="6" fill="#f8bbd0"/>
+                <circle cx="55" cy="35" r="14" fill="#ad1457"/>
+                <circle cx="55" cy="35" r="9" fill="#e91e63"/>
+                <circle cx="35" cy="55" r="12" fill="#c2185b"/>
+            </svg>
+
+            <div class="ribbon-header-container">
+                <div>
+                    <span class="number-7">7</span><span class="th-text">th</span>
+                </div>
+                <div class="banner-ribbon">BIRTHDAY</div>
+            </div>
+
+            <br>
+            <div class="hero-portrait-wrapper">
+                <img src="miana.jpg" alt="Miana Micael" class="hero-portrait">
+            </div>
+            <br>
+
+            <h1>Miana Micael</h1>
+
+            <div class="event-details-card">
+                <div class="event-col">
+                    <div class="event-icon-circle">📍</div>
+                    <div class="event-title">VENUE</div>
+                    <div class="event-value">Rolling Hills<br>Bamban</div>
+                </div>
+                <div class="event-col">
+                    <div class="event-icon-circle">📅</div>
+                    <div class="event-title">DATE</div>
+                    <div class="event-value">September 26,<br>2026</div>
+                </div>
+                <div class="event-col">
+                    <div class="event-icon-circle">⏰</div>
+                    <div class="event-title">TIME</div>
+                    <div class="event-value">3:00 PM</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="details-grid">
+            <div class="card card-roses" onclick="toggleCard(this)">
+                <h3>7th Roses</h3>
+                <div class="dress-badge" style="background: #500014;">DRESS CODE: MAROON</div>
+                <div class="hidden-content">
+                    <ul>
+                        <li>Harley David Maristela</li>
+                        <li>Jay Amenadil Capinding</li>
+                        <li>Lucas Benjamin Cortez</li>
+                        <li>RG Magtoto</li>
+                        <li>Nathan Allado</li>
+                        <li>Mario Capinding</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-candles" onclick="toggleCard(this)">
+                <h3>7th Candles & Wishes</h3>
+                <div class="dress-badge" style="background: #8b6b3e;">DRESS CODE: IVORY</div>
+                <div class="hidden-content">
+                    <ul>
+                        <li>Jeanelle Mia Cauguiran</li>
+                        <li>Nathalie Colleen Granada</li>
+                        <li>Bella Laurisse Avecilla</li>
+                        <li>Annika Sphoia Mendoza</li>
+                        <li>Franchezca Venice Dizon</li>
+                        <li>Xiah Campo</li>
+                        <li>Sophia Lorraine Ocampo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-bluebills" onclick="toggleCard(this)">
+                <h3>7th Blue Bills</h3>
+                <div class="dress-badge" style="background: #0277bd;">DRESS CODE: PASTEL BLUE</div>
+                <div class="hidden-content">
+                    <ul>
+                        <li>Kim Lavarias</li>
+                        <li>Annabelle Muñoz</li>
+                        <li>Lalaine Macaraeg</li>
+                        <li>Maricar Bagsic</li>
+                        <li>Honeylet Campo</li>
+                        <li>Joy Mendoza</li>
+                        <li>Leny Dizon</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-gifts" onclick="toggleCard(this)">
+                <h3>7th Gifts</h3>
+                <div class="dress-badge" style="background: #f57f17;">DRESS CODE: PASTEL YELLOW</div>
+                <div class="hidden-content">
+                    <ul>
+                        <li>Catriona Louise Sangalang</li>
+                        <li>Thalea</li>
+                        <li>Gavien Gueco</li>
+                        <li>Jaymie Banag</li>
+                        <li>Jenna Yu</li>
+                        <li>Sandrea Ocampo</li>
+                        <li>Bradley Cadwallader</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-treasures" onclick="toggleCard(this)">
+                <h3>7th Treasures</h3>
+                <div class="dress-badge" style="background: #4e342e;">DRESS CODE: KHAKI</div>
+                <div class="hidden-content">
+                    <ul>
+                        <li>Ivy Capinding</li>
+                        <li>Angel Valenzuela</li>
+                        <li>Christian Legaspi</li>
+                        <li>Yaji Lean Banag</li>
+                        <li>Kristine Amor</li>
+                        <li>Marie Paule</li>
+                        <li>Jeremy Galang</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-special" onclick="toggleCard(this)">
+                <h3>7th Special Gift</h3>
+                <div class="dress-badge" style="background: #ad1457;">TATI RHEA</div>
+                <div class="hidden-content">
+                    <p style="text-align: center; font-weight: bold; font-family: 'Dancing Script', cursive; font-size: 1.3rem;">Special Gift from Tati Rhea</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            🌷 We kindly ask our guests to follow the designated colors & wear shades of purple! 💜
+        </div>
+    </div>
+
+    <script>
+        function openInvitation() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        }
+
+        function toggleCard(selectedCard) {
+            const allCards = document.querySelectorAll('.card');
+            allCards.forEach(card => {
+                const content = card.querySelector('.hidden-content');
+                if (card === selectedCard) {
+                    const isOpen = content.style.display === 'block';
+                    content.style.display = isOpen ? 'none' : 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
